@@ -1,3 +1,3 @@
 export default {
-  "lang": "语言",
+  "language": "语言",
 }

@@ -7,8 +7,8 @@
     <el-form label-width="120px" label-position="left">
 
       <!-- 语言 -->
-      <el-form-item label="语言">
-        <el-select class="w100" v-model="state.startForm.lang">
+      <el-form-item :label="t('language')">
+        <el-select  @change="changeLang" class="w100" v-model="state.startForm.lang">
           <el-option label="中文简体" value="zh-cn"></el-option>
           <el-option label="English" value="en"></el-option>
         </el-select>
@@ -57,14 +57,23 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
+import { useI18n } from 'vue-i18n'; // 引用国际化
 
 // dialog组件自动弹出
 const dialogVisible = ref(true)
 
+const { t, locale } = useI18n() // 国际化
+
+// 语言切换
+const changeLang = (val: string) => {
+    window.localStorage.setItem('ba-lang', val)
+    location.reload()
+}
+
 // 状态设置
 const state = reactive({
   startForm: {
-    lang: '中文简体', // 语言：默认中文简体
+    lang: locale.value, // 语言：默认中文简体
     packageManager: 'pnpm（推荐）',  // NPM包管理器：默认pnpm
     setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
   }
