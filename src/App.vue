@@ -1,5 +1,5 @@
 <template>
-  <Check  />
+  <Check />
 </template>
 
 <script setup lang="ts">

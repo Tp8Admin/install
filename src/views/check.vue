@@ -1,6 +1,11 @@
 <template>
   <!-- dialog组件/start -->
-  <el-dialog v-model="dialogVisible" :title="t('Ready to start')" center :show-close="false" :close-on-click-modal="false"
+  <el-dialog
+    v-model="dialogVisible" 
+    :title="t('Ready to start')" 
+    center 
+    :show-close="false" 
+    :close-on-click-modal="false"
     :close-on-press-escape="false">
 
     <!-- 表单内容/start -->
@@ -8,7 +13,7 @@
 
       <!-- 语言 -->
       <el-form-item :label="t('language')">
-        <el-select  @change="changeLang" class="w100" v-model="state.startForm.lang">
+        <el-select @change="changeLang" class="w100" v-model="state.startForm.lang">
           <el-option label="中文简体" value="zh-cn"></el-option>
           <el-option label="English" value="en"></el-option>
         </el-select>
@@ -72,11 +77,11 @@ const changeLang = (val: string) => {
 
 // 状态设置
 const state = reactive({
-  startForm: {
-    lang: locale.value, // 语言：默认中文简体
-    packageManager: 'pnpm'+t('Recommand'),  // NPM包管理器：默认pnpm
-    setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
-  }
+    startForm: {
+        lang: locale.value, // 语言：默认中文简体
+        packageManager: 'pnpm'+t('Recommand'),  // NPM包管理器：默认pnpm
+        setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
+    }
 })
 </script>
   
