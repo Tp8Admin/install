@@ -1,6 +1,6 @@
 <template>
   <!-- dialog组件/start -->
-  <el-dialog v-model="dialogVisible" title="准备开始" center :show-close="false" :close-on-click-modal="false"
+  <el-dialog v-model="dialogVisible" :title="t('Ready to start')" center :show-close="false" :close-on-click-modal="false"
     :close-on-press-escape="false">
 
     <!-- 表单内容/start -->
@@ -15,22 +15,22 @@
       </el-form-item>
 
       <!-- NPM包管理器 -->
-      <el-form-item label="NPM包管理器">
+      <el-form-item :label="t('NPM package manager')">
         <el-select class="w100" v-model="state.startForm.packageManager">
           <el-option label="npm" value="npm"></el-option>
           <el-option label="cnpm" value="cnpm"></el-option>
-          <el-option label="pnpm（推荐）" value="pnpm"></el-option>
-          <el-option label="yarn推荐" value="yarn"></el-option>
+          <el-option :label="'pnpm'+t('Recommand')" value="pnpm"></el-option>
+          <el-option :label="'yarn'+t('Recommand')" value="yarn"></el-option>
           <el-option label="ni" value="ni"></el-option>
-          <el-option label="我想手动执行命令" value="none"></el-option>
+          <el-option :label="t('I want to execute the command manually')" value="none"></el-option>
         </el-select>
       </el-form-item>
 
       <!-- 设置NPM源 -->
-      <el-form-item label="设置NPM源" v-model="state.startForm.setNpmRegistery">
+      <el-form-item :label="t('Set NPM source')" v-model="state.startForm.setNpmRegistery">
         <el-radio-group v-model="state.startForm.setNpmRegistery">
-          <el-radio label="none">使用当前源</el-radio>
-          <el-radio label="taobao">淘宝</el-radio>
+          <el-radio label="none">{{ t('Use current source') }}</el-radio>
+          <el-radio label="taobao">{{ t('TaoBao') }}</el-radio>
           <el-radio label="npm">NPM</el-radio>
           <el-radio label="rednpm">RedNPM</el-radio>
         </el-radio-group>
@@ -46,7 +46,7 @@
           <el-icon>
             <Promotion />
           </el-icon>
-          <span class="start-install">开始安装</span>
+          <span class="start-install">{{ t('Start installation') }}</span>
         </el-button>
       </span>
     </template>
@@ -74,7 +74,7 @@ const changeLang = (val: string) => {
 const state = reactive({
   startForm: {
     lang: locale.value, // 语言：默认中文简体
-    packageManager: 'pnpm（推荐）',  // NPM包管理器：默认pnpm
+    packageManager: 'pnpm'+t('Recommand'),  // NPM包管理器：默认pnpm
     setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
   }
 })
