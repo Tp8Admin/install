@@ -79,17 +79,17 @@ const { t, locale } = useI18n(); // 国际化
 
 // 语言切换
 const changeLang = (val: string) => {
-  window.localStorage.setItem("ba-lang", val);
-  location.reload();
+    window.localStorage.setItem("ba-lang", val);
+    location.reload();
 };
 
 // 状态设置
 const state = reactive({
-  startForm: {
-    lang: locale.value, // 语言：默认中文简体
-    packageManager: "pnpm" + t("Recommand"), // NPM包管理器：默认pnpm
-    setNpmRegistery: "taobao", // 设置NPM源：默认淘宝
-  },
+    startForm: {
+        lang: locale.value, // 语言：默认中文简体
+        packageManager: "pnpm" + t("Recommand"), // NPM包管理器：默认pnpm
+        setNpmRegistery: "taobao", // 设置NPM源：默认淘宝
+    },
 });
 </script>
   
