@@ -26,14 +26,14 @@
             "warn",
             {
                 "argsIgnorePattern": "^_",
-                "varsIgnorePattern": "^_",
-            },
+                "varsIgnorePattern": "^_"
+            }
         ],
         "no-unused-vars": [
             "warn",
             {
                 "argsIgnorePattern": "^_",
-                "varsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
             }
         ],
         "vue/v-on-event-hyphenation": "off",

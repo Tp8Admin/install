@@ -1,5 +1,5 @@
 <template>
-  <Check />
+    <Check />
 </template>
 
 <script setup lang="ts">
@@ -11,4 +11,3 @@ const { locale } = useI18n()
 var langValue = window.localStorage.getItem('ba-lang') || 'zh-cn'
 locale.value = langValue
 </script>
-
