@@ -9,7 +9,7 @@
         :close-on-press-escape="false"
     >
         <!-- 表单内容/start -->
-        <el-form label-width="120px" label-position="left">
+        <el-form label-width="120px" label-position="left" :model="state.startForm" @click="startInstall">
             <!-- 语言 -->
             <el-form-item :label="t('language')">
                 <el-select @change="changeLang" class="w100" v-model="state.startForm.lang">
@@ -45,7 +45,7 @@
         <!-- 底部 -->
         <template #footer>
             <span class="dialog-footer">
-                <el-button type="primary" size="large" round>
+                <el-button type="primary" size="large" round @click="startInstall">
                     <el-icon>
                         <Promotion />
                     </el-icon>
@@ -58,15 +58,24 @@
 </template>
 
 <script lang="ts" setup>
+/**
+ * 依赖部分
+ */
 import { ref, reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
 
+/**
+ * 定义部分
+ */
 // dialog组件自动弹出
 const dialogVisible = ref(true)
 
 const { t, locale } = useI18n() // 国际化
 
+/**
+ * 函数部分
+ */
 // 语言切换
 const changeLang = (val: string) => {
     window.localStorage.setItem('ta-lang', val)
@@ -75,12 +84,18 @@ const changeLang = (val: string) => {
 
 // 状态设置
 const state = reactive({
+    // 开始表单
     startForm: {
         lang: locale.value, // 语言：默认中文简体
         packageManager: 'pnpm' + t('Recommand'), // NPM包管理器：默认pnpm
         setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
     },
 })
+
+// 开始安装
+const startInstall = () => {
+
+}
 </script>
 
 <style scoped lang="scss">
