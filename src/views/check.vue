@@ -1,5 +1,5 @@
 <template>
-    <!-- dialog组件/start -->
+    <!-- 显示dialog组件/start -->
     <el-dialog
         v-model="dialogVisible"
         :title="t('Ready to start')"
@@ -54,27 +54,30 @@
             </span>
         </template>
     </el-dialog>
-    <!-- dialog组件/end -->
+    <!-- 显示dialog组件/end -->
 </template>
 
 <script lang="ts" setup>
 /**
- * 依赖部分
+ * 一：依赖部分
  */
 import { ref, reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
+import { useCommon } from '@/stores/common' // 引用公共store
 
 /**
- * 定义部分
+ * 二：定义部分
  */
 // dialog组件自动弹出
 const dialogVisible = ref(true)
 
 const { t, locale } = useI18n() // 国际化
 
+const common = useCommon() // 公共store
+
 /**
- * 函数部分
+ * 三：函数部分
  */
 // 语言切换
 const changeLang = (val: string) => {
@@ -92,10 +95,22 @@ const state = reactive({
     },
 })
 
+// 改变包管理器
+const changePackageManager = () => {
+    console.log('改变包管理器 且 下一步操作')
+}
+
 // 开始安装
 const startInstall = () => {
-
+    // 判断显示dialog为true时显示包管理器
+    if (common.showStartDialog) {
+        changePackageManager()
+    }
+    // 关闭dialog
+    common.toggleStartDialog(false) 
 }
+
+
 </script>
 
 <style scoped lang="scss">
