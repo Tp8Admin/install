@@ -69,7 +69,7 @@ const { t, locale } = useI18n() // 国际化
 
 // 语言切换
 const changeLang = (val: string) => {
-    window.localStorage.setItem('ba-lang', val)
+    window.localStorage.setItem('ta-lang', val)
     location.reload()
 }
 
