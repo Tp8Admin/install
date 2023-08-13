@@ -1,5 +1,11 @@
 export default {
     /**
+     * 列表页面
+     */
+    'Environmental inspection': 'Environmental inspection',
+    'Checking installation environment': 'Checking the installation environment',
+    
+    /**
      * check页面
      */
     // 准备开始

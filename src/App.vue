@@ -11,3 +11,9 @@ const { locale } = useI18n()
 var langValue = window.localStorage.getItem('ta-lang') || 'zh-cn'
 locale.value = langValue
 </script>
+
+<style lang="scss">
+body {
+  background-color: #f5f5f5;
+}
+</style>

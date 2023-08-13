@@ -1,13 +1,115 @@
 <template>
+    <!-- 列表页面/start -->
+    <div class="container">
+        <div class="table-title">{{ t('Environmental inspection') }}</div>
+        <div class="table">
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>PHP</span>
+                </div>
+                <div class="table-value">
+                    8.0.26<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>配置目录是否可写</span>
+                </div>
+                <div class="table-value">
+                    可写<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>public目录是否可写</span>
+                </div>
+                <div class="table-value">
+                    可写<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>PHP PDO扩展</span>
+                </div>
+                <div class="table-value">
+                    已安装<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>PHP gd2或freeType</span>
+                </div>
+                <div class="table-value">
+                    已安装<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>PHP 程序执行函数(proc)</span>
+                </div>
+                <div class="table-value">
+                    允许执行<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>NPM版本</span>
+                </div>
+                <div class="table-value">
+                    9.3.1<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>node.js版本</span>
+                </div>
+                <div class="table-value">
+                    v18.14.0<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>包管理器 pnpm</span>
+                </div>
+                <div class="table-value">
+                    8.6.7<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">
+                    <span>是否测试命令执行？</span>
+                </div>
+                <div class="table-value">
+                    <img title="图片" class="data-state" src="@/assets/install/warn.png" />
+                </div>
+            </div>
+
+            <div class="table-item">
+                <div class="table-label">{{ t('Checking installation environment') }}</div>
+                <div class="table-value">
+                    <img title="正在检测" class="data-state" alt="正在检测" src="@/assets/install/loading.gif"/>
+                </div>
+            </div>
+
+            <div class="check-done ok">恭喜，安装可以继续</div>
+            <div class="button">第二点：站点配置</div>
+        </div>
+    </div>
+    <!-- 列表页面/end -->
+
     <!-- 显示dialog组件/start -->
-    <el-dialog
-        v-model="dialogVisible"
-        :title="t('Ready to start')"
-        center
-        :show-close="false"
-        :close-on-click-modal="false"
-        :close-on-press-escape="false"
-    >
+    <el-dialog v-model="common.showStartDialog" :title="t('Ready to start')" center :show-close="false"
+        :close-on-click-modal="false" :close-on-press-escape="false">
         <!-- 表单内容/start -->
         <el-form label-width="120px" label-position="left" :model="state.startForm" @click="startInstall">
             <!-- 语言 -->
@@ -107,13 +209,133 @@ const startInstall = () => {
         changePackageManager()
     }
     // 关闭dialog
-    common.toggleStartDialog(false) 
+    common.toggleStartDialog(false)
 }
 
 
 </script>
 
 <style scoped lang="scss">
+// 列表页面/start
+.container {
+    margin-top: 20px;
+
+    .table-title {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        color: #303133;
+    }
+
+    .table {
+        max-width: 560px;
+        padding: 20px;
+        margin: 10px auto;
+    }
+
+    .global-warning {
+        margin-bottom: 10px;
+    }
+
+    .table-item {
+        color: #303133;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fff;
+        padding: 13px 15px;
+        margin-bottom: 2px;
+        border-radius: 5px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: #fcfcfc;
+        }
+
+        .table-label {
+            font-size: 15px;
+        }
+
+        .label-need {
+            font-size: 12px;
+            color: #f56c6c;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+
+        .label-need.faq,
+        .label-need.install-cnpm {
+            color: #3f6ad8;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .label-need.text {
+            cursor: text;
+        }
+    }
+
+    .table-item.error {
+        background-color: #f56c6c;
+        color: #fff;
+    }
+
+    .table-item.success {
+        background-color: #67c23a;
+        color: #fff;
+    }
+
+    .table-value {
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+
+    .data-state {
+        width: 20px;
+        height: 20px;
+        user-select: none;
+        margin-left: 5px;
+    }
+}
+
+// 列表页面/end
+
+// 按钮 / start
+.check-done {
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.check-done.ok {
+    color: #67c23a;
+}
+
+.check-done.fail {
+    color: #f56c6c;
+}
+
+.button {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #409eff;
+    border-radius: 5px;
+    color: #fff;
+    margin-top: 20px;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.button.pass {
+    opacity: 1;
+}
+
+// 按钮 / end 
 .w100 {
     width: 100%;
 }

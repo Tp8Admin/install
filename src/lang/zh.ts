@@ -1,5 +1,11 @@
 export default {
     /**
+     * 列表页面
+     */
+    'Environmental inspection': '环境检查',
+    'Checking installation environment': '正在检查安装环境',
+
+    /**
      * check页面
      */
     // 准备开始
