@@ -22,4 +22,17 @@ export default {
     TaoBao: 'Taobao',
     // 安装
     'Start installation': 'Start installation',
+
+    /**
+     * 封装axios
+     */
+    'The interface path cannot be found': 'The interface path cannot be found(404):{url}',
+    'Request timeout!': 'Request timeout!',
+    'Server internal error!': 'Internal server error!',
+    'The service is temporarily unavailable. Please try again later!': 'The service is temporarily unavailable. Please try again later!',
+    'Abnormal problem, please contact the website administrator!': 'Abnormal problem, please contact the website administrator!',
+    'Network Timeout': 'Network timeout',
+    'Network connection error': 'Network connection error',
+    "You're disconnected!": "You're disconnected!",
+    'unknown error': 'Unknown error',
 }
