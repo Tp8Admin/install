@@ -167,6 +167,7 @@ import { ref, reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
 import { useCommon } from '@/stores/common' // 引用公共store
+import { Axios } from '@/utils/axios' // 引用axios
 
 /**
  * 二：定义部分
@@ -181,6 +182,10 @@ const common = useCommon() // 公共store
 /**
  * 三：函数部分
  */
+Axios.get('http://localhost:3000/api/test').then((res: any) => {
+    console.log('res:', res)
+})
+
 // 语言切换
 const changeLang = (val: string) => {
     window.localStorage.setItem('ta-lang', val)
