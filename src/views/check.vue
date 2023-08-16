@@ -182,6 +182,7 @@ const common = useCommon() // 公共store
 /**
  * 三：函数部分
  */
+// 测试
 Axios.get('http://localhost:3000/api/test').then((res: any) => {
     console.log('res:', res)
 })
