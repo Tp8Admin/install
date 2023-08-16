@@ -4,87 +4,31 @@
         <div class="table-title">{{ t('Environmental inspection') }}</div>
         <div class="table">
 
-            <div class="table-item">
-                <div class="table-label">
-                    <span>PHP</span>
+            <!-- 第一步：PHP检测环境 -->
+            <template v-for="item in state.envCheckPhpData" :key="idx">
+                <div class="table-item" >
+                    <div class="table-label">
+                        <span>{{ item.name }}</span>
+                    </div>
+                    <div class="table-value">
+                        {{ item.describe }}<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                    </div>
                 </div>
-                <div class="table-value">
-                    8.0.26<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+            </template>
+            
+            <!-- 第二步：NPM检测环境-->
+            <template v-for="item in state.envCheckNpmData" :key="idx">
+                <div class="table-item">
+                    <div class="table-label">
+                        <span>{{ item.name }}</span>
+                    </div>
+                    <div class="table-value">
+                        {{ item.describe }}<img title="图片" class="data-state" src="@/assets/install/ok.png" />
+                    </div>
                 </div>
-            </div>
+            </template>
 
-            <div class="table-item">
-                <div class="table-label">
-                    <span>配置目录是否可写</span>
-                </div>
-                <div class="table-value">
-                    可写<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                </div>
-            </div>
-
-            <div class="table-item">
-                <div class="table-label">
-                    <span>public目录是否可写</span>
-                </div>
-                <div class="table-value">
-                    可写<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                </div>
-            </div>
-
-            <div class="table-item">
-                <div class="table-label">
-                    <span>PHP PDO扩展</span>
-                </div>
-                <div class="table-value">
-                    已安装<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                </div>
-            </div>
-
-            <div class="table-item">
-                <div class="table-label">
-                    <span>PHP gd2或freeType</span>
-                </div>
-                <div class="table-value">
-                    已安装<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                </div>
-            </div>
-
-            <div class="table-item">
-                <div class="table-label">
-                    <span>PHP 程序执行函数(proc)</span>
-                </div>
-                <div class="table-value">
-                    允许执行<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                </div>
-            </div>
-
-            <div class="table-item">
-                <div class="table-label">
-                    <span>NPM版本</span>
-                </div>
-                <div class="table-value">
-                    9.3.1<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                </div>
-            </div>
-
-            <div class="table-item">
-                <div class="table-label">
-                    <span>node.js版本</span>
-                </div>
-                <div class="table-value">
-                    v18.14.0<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                </div>
-            </div>
-
-            <div class="table-item">
-                <div class="table-label">
-                    <span>包管理器 pnpm</span>
-                </div>
-                <div class="table-value">
-                    8.6.7<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                </div>
-            </div>
-
+           
             <div class="table-item">
                 <div class="table-label">
                     <span>是否测试命令执行？</span>
@@ -179,28 +123,44 @@ const { t, locale } = useI18n() // 国际化
 
 const common = useCommon() // 公共store
 
-/**
- * 三：函数部分
- */
-// 测试
-Axios.get('http://localhost:3000/api/test').then((res: any) => {
-    console.log('res:', res)
-})
-
-// 语言切换
-const changeLang = (val: string) => {
-    window.localStorage.setItem('ta-lang', val)
-    location.reload()
-}
 
 // 状态设置
 const state = reactive({
+    // 环境检测数据
+    envCheckPhpData: [], // PHP环境检测数据
+    envCheckNpmData: [], // NPM环境检测数据
+
     // 开始表单
     startForm: {
         lang: locale.value, // 语言：默认中文简体
         packageManager: 'pnpm' + t('Recommand'), // NPM包管理器：默认pnpm
         setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
     },
+})
+
+/**
+ * 三：函数部分
+ */
+// 语言切换
+const changeLang = (val: string) => {
+    window.localStorage.setItem('ta-lang', val)
+    location.reload()
+}
+
+// 获取PHP环境检测数据
+Axios.get('http://localhost:3000/api/envCheckPhp').then((res: any) => {
+    console.log('res_php:', res)
+    if (res.data.code == 1) {
+        state.envCheckPhpData = res.data.data
+    }
+})
+
+// 获取NPM环境检测数据
+Axios.get('http://localhost:3000/api/envCheckNpm').then((res: any) => {
+    console.log('res_npm:', res)
+    if (res.data.code == 1) {
+        state.envCheckNpmData = res.data.data
+    }
 })
 
 // 改变包管理器
