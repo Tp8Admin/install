@@ -13,6 +13,13 @@ export const useCommon = defineStore('common', {
             this.showStartDialog = val
         },
 
+        // 切换步骤
+        setStep(val: string) {
+            this.step = val
+        }
+
+
+
     },
     persist: {
         key: 'storeCommon',

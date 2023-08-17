@@ -46,7 +46,7 @@
             </div>
 
             <div class="check-done ok">恭喜，安装可以继续</div>
-            <div class="button">第二点：站点配置</div>
+            <div class="button pass" @click="goConfig" >第二点：站点配置</div>
         </div>
     </div>
     <!-- 列表页面/end -->
@@ -92,9 +92,7 @@
         <template #footer>
             <span class="dialog-footer">
                 <el-button type="primary" size="large" round @click="startInstall">
-                    <el-icon>
-                        <Promotion />
-                    </el-icon>
+                    <el-icon><Promotion /></el-icon>
                     <span class="start-install">{{ t('Start installation') }}</span>
                 </el-button>
             </span>
@@ -126,16 +124,20 @@ const common = useCommon() // 公共store
 
 // 状态设置
 const state = reactive({
-    // 环境检测数据
-    envCheckPhpData: [], // PHP环境检测数据
-    envCheckNpmData: [], // NPM环境检测数据
-
     // 开始表单
     startForm: {
         lang: locale.value, // 语言：默认中文简体
         packageManager: 'pnpm' + t('Recommand'), // NPM包管理器：默认pnpm
         setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
     },
+
+    // 环境检测数据
+    envCheckPhpData: [], // PHP环境检测数据
+    envCheckNpmData: [], // NPM环境检测数据
+
+    // 是否显示环境检测
+    checkDoneIndex: 'executing', // 三种状态：执行 executing 、成功 ok 、失败 fail
+
 })
 
 /**
@@ -176,6 +178,14 @@ const startInstall = () => {
     }
     // 关闭dialog
     common.toggleStartDialog(false)
+}
+
+/**
+ * 下一步配置数据库
+ */
+ const goConfig = () => {
+    state.checkDoneIndex = 'ok'
+    common.setStep('config')
 }
 
 
