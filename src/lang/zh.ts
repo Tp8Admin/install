@@ -35,4 +35,23 @@ export default {
     'Network connection error': '网络连接错误',
     "You're disconnected!": '您断网了！',
     'unknown error': '未知错误',
+
+    /**
+     * 数据库配置
+     */
+    'Mysql database address': 'MySQL 数据库地址',
+    'MySQL connection user name': 'MySQL 连接用户名',
+    'MySQL connection password': 'MySQL 连接密码',
+    'MySQL connection port number': 'MySQL 连接端口号',
+    'Mysql database name': 'MySQL 数据库名',
+    'MySQL data table prefix': 'MySQL 数据表前缀',
+    'Administrator user name': '管理员用户名',
+    'Administrator password': '管理员密码',
+    'Duplicate administrator password': '重复管理员密码',
+    'Site name': '站点名称',
+    'Backend login password': '后台登录密码',
+    'Test connection to data server': '测试连接数据服务器...',
+    'Install now': '立即安装',
+    'Previous step': '上一步',
+    
 }

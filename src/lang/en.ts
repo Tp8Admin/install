@@ -35,4 +35,22 @@ export default {
     'Network connection error': 'Network connection error',
     "You're disconnected!": "You're disconnected!",
     'unknown error': 'Unknown error',
+
+    /**
+     * 数据库配置
+     */
+    'Mysql database address': 'Mysql database address',
+    'MySQL connection user name': 'MySQL connection username',
+    'MySQL connection password': 'MySQL connection password',
+    'MySQL connection port number': 'MySQL connection port number',
+    'Mysql database name': 'Mysql database name',
+    'MySQL data table prefix': 'MySQL data table prefix',
+    'Administrator user name': 'Administrator username',
+    'Administrator password': 'Administrator password',
+    'Duplicate administrator password': 'Duplicate administrator password',
+    'Site name': 'Site Name',
+    'Backend login password': 'Backend login password',
+    'Test connection to data server': 'Test connection to data server',
+    'Install now': 'Install now',
+    'Previous step': 'Previous step',
 }
