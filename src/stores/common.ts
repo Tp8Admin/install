@@ -17,9 +17,6 @@ export const useCommon = defineStore('common', {
         setStep(val: string) {
             this.step = val
         }
-
-
-
     },
     persist: {
         key: 'storeCommon',
