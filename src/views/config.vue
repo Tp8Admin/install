@@ -116,56 +116,80 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 <template>
   <div class="container">
 
-    <div class="table-title">第二步 站点配置</div>
+    <div class="table-title">站点配置</div>
 
     <div class="table">
       <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="180px">
         <!-- MySQL数据库地址 -->
-        <el-form-item label="MySQL数据库地址" prop="hostname">
-          <el-input v-model="ruleForm.hostname" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库地址" prop="hostname" class="table-label">
+            <el-input v-model="ruleForm.hostname" class="table-input" />
+          </el-form-item>
+        </div>
         <!-- MySQL数据库用户名 -->
-        <el-form-item label="MySQL数据库用户名" prop="username">
-          <el-input v-model="ruleForm.username" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库用户名" prop="username" class="table-label">
+            <el-input v-model="ruleForm.username" />
+          </el-form-item>
+        </div>
         <!-- MySQL数据库密码 -->
-        <el-form-item label="MySQL数据库密码" prop="password">
-          <el-input v-model="ruleForm.password" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库密码" prop="password" class="table-label">
+            <el-input v-model="ruleForm.password" />
+          </el-form-item>
+        </div>
         <!-- MySQL数据库端口 -->
-        <el-form-item label="MySQL数据库端口" prop="hostport">
-          <el-input v-model="ruleForm.hostport" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库端口" prop="hostport" class="table-label">
+            <el-input v-model="ruleForm.hostport" />
+          </el-form-item>
+        </div>
         <!-- MySQL数据库名称 -->
-        <el-form-item label="MySQL数据库名称" prop="database">
-          <el-input v-model="ruleForm.database" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库名称" prop="database" class="table-label">
+            <el-input v-model="ruleForm.database" />
+          </el-form-item>
+        </div>
         <!-- MySQL数据库表前缀 -->
-        <el-form-item label="MySQL数据库表前缀" prop="prefix">
-          <el-input v-model="ruleForm.prefix" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库表前缀" prop="prefix" class="table-label">
+            <el-input v-model="ruleForm.prefix" />
+          </el-form-item>
+        </div>
+        <div class="table-item-br"></div>
+
         <!-- 管理员账号 -->
-        <el-form-item label="管理员账号" prop="adminname">
-          <el-input v-model="ruleForm.adminname" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="管理员账号" prop="adminname" class="table-label">
+            <el-input v-model="ruleForm.adminname" />
+          </el-form-item>
+        </div>
         <!-- 管理员密码 -->
-        <el-form-item label="管理员密码" prop="adminpassword">
-          <el-input v-model="ruleForm.adminpassword" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="管理员密码" prop="adminpassword" class="table-label">
+            <el-input v-model="ruleForm.adminpassword" />
+          </el-form-item>
+        </div>
         <!-- 重复管理员密码 -->
-        <el-form-item label="重复管理员密码" prop="repeatadminpassword">
-          <el-input v-model="ruleForm.repeatadminpassword" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="重复管理员密码" prop="repeatadminpassword" class="table-label">
+            <el-input v-model="ruleForm.repeatadminpassword" />
+          </el-form-item>
+        </div>
+        <div class="table-item-br"></div>
+
         <!-- 站点名称 -->
-        <el-form-item label="站点名称" prop="sitename">
-          <el-input v-model="ruleForm.sitename" />
-        </el-form-item>
+        <div class="table-column table-item">
+          <el-form-item label="站点名称" prop="sitename" class="table-label">
+            <el-input v-model="ruleForm.sitename" />
+          </el-form-item>
+        </div>
+
         <!-- 提交按钮 -->
-        <el-form-item>
-          <!-- 上一步 -->
-          <el-button @click="prevStep">上一步</el-button>
-          <el-button type="primary" @click="submitForm(ruleFormRef)">提交</el-button>
-        </el-form-item>
+        <div class="footer-buttons">
+          <el-button class="button" @click="prevStep">上一步</el-button>
+          <el-button class="button" type="primary" @click="submitForm(ruleFormRef)">提交</el-button>
+        </div>
       </el-form>
     </div>
 
@@ -175,21 +199,87 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 
 <style lang="scss" scoped>
 .container {
-  width: 500px;
-  margin: 0 auto;
+  margin-top: 10px;
 
+  // 表头
   .table-title {
-    font-size: 20px;
-    font-weight: bold;
+    display: block;
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 20px;
+    color: #303133;
   }
 
+  // 表格
   .table {
+    max-width: 560px;
     padding: 20px;
-    border: 1px solid #eee;
-    border-radius: 5px;
+    margin: 0 auto;
+
+    // 换行
+    .table-item-br {
+      height: 20px;
+    }
+
+    // 表格明细
+    .table-item:focus-within {
+      .table-input {
+        color: #303133;
+      }
+
+      border: 2px solid #4e73df;
+    }
+
+    .table-column {
+      padding: 12px;
+      border-radius: 3px;
+      border: 2px solid #fff;
+      transition: all .3s ease-in-out;
+    }
+
+    .table-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2px;
+      background-color: #fff;
+      color: #909399;
+
+      .table-label {
+        flex: 1;
+        font-size: 15px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // 底部按钮
+  .footer-buttons {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .button {
+      width: 50%;
+      height: 42px;
+    }
+  }
+
+  // 使用deep更改输入框样式
+  :deep(.el-input__wrapper) {
+    box-shadow: none;
+  }
+  :deep(.el-input__wrapper.is-focus) {
+    box-shadow: none;
+  }
+
+  // 输入杠报错标红修改
+  :deep(.el-form-item.is-error .el-input__wrapper) {
+    box-shadow: none;
+  }
+  
+  :deep(.el-form-item__error) {
+    left: 11px;
+    margin-top: -6px;
   }
 }
 </style>
-```
