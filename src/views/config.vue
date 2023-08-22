@@ -106,6 +106,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       console.log('submit!')
+      common.setStep('done')
     } else {
       console.log('error submit!', fields)
     }
@@ -258,6 +259,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .button {
       width: 50%;
       height: 42px;
@@ -268,6 +270,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   :deep(.el-input__wrapper) {
     box-shadow: none;
   }
+
   :deep(.el-input__wrapper.is-focus) {
     box-shadow: none;
   }
@@ -276,7 +279,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   :deep(.el-form-item.is-error .el-input__wrapper) {
     box-shadow: none;
   }
-  
+
   :deep(.el-form-item__error) {
     left: 11px;
     margin-top: -6px;

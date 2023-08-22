@@ -4,7 +4,7 @@ export const useCommon = defineStore('common', {
     state: () => {
         return {
             step: 'check', // 当前步骤
-            showStartDialog: false, // 是否显示开始对话框，默认显示
+            showStartDialog: true, // 是否显示开始对话框，默认显示
         }
     },
     actions: {

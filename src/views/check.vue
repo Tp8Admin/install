@@ -46,7 +46,7 @@
             </div>
 
             <div class="check-done ok">恭喜，安装可以继续</div>
-            <div class="button pass" @click="goConfig" >第二点：站点配置</div>
+            <div class="button pass" @click="goConfig">第二点：站点配置</div>
         </div>
     </div>
     <!-- 列表页面/end -->
