@@ -1,3 +1,93 @@
+<script lang="ts" setup>
+/**
+ * 一：依赖部分
+ */
+import { ref, reactive } from 'vue' // 引用vue3
+import { Promotion } from '@element-plus/icons-vue' // 引用图标库
+import { useI18n } from 'vue-i18n' // 引用国际化
+import { useCommon } from '@/stores/common' // 引用公共store
+import { Axios } from '@/utils/axios' // 引用axios
+
+/**
+ * 二：定义部分
+ */
+// dialog组件自动弹出
+const dialogVisible = ref(true)
+
+const { t, locale } = useI18n() // 国际化
+
+const common = useCommon() // 公共store
+
+
+// 状态设置
+const state = reactive({
+    // 开始表单
+    startForm: {
+        lang: locale.value, // 语言：默认中文简体
+        packageManager: 'pnpm' + t('Recommand'), // NPM包管理器：默认pnpm
+        setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
+    },
+
+    // 环境检测数据
+    envCheckPhpData: [], // PHP环境检测数据
+    envCheckNpmData: [], // NPM环境检测数据
+
+    // 是否显示环境检测
+    checkDoneIndex: 'executing', // 三种状态：执行 executing 、成功 ok 、失败 fail
+
+})
+
+/**
+ * 三：函数部分
+ */
+// 语言切换
+const changeLang = (val: string) => {
+    window.localStorage.setItem('ta-lang', val)
+    location.reload()
+}
+
+// 获取PHP环境检测数据
+Axios.get('http://localhost:3000/api/envCheckPhp').then((res: any) => {
+    console.log('res_php:', res)
+    if (res.data.code == 1) {
+        state.envCheckPhpData = res.data.data
+    }
+})
+
+// 获取NPM环境检测数据
+Axios.get('http://localhost:3000/api/envCheckNpm').then((res: any) => {
+    console.log('res_npm:', res)
+    if (res.data.code == 1) {
+        state.envCheckNpmData = res.data.data
+    }
+})
+
+// 改变包管理器
+const changePackageManager = () => {
+    console.log('改变包管理器 且 下一步操作')
+}
+
+// 开始安装
+const startInstall = () => {
+    // 判断显示dialog为true时显示包管理器
+    if (common.showStartDialog) {
+        changePackageManager()
+    }
+    // 关闭dialog
+    common.toggleStartDialog(false)
+}
+
+/**
+ * 下一步配置数据库
+ */
+ const goConfig = () => {
+    state.checkDoneIndex = 'ok'
+    common.setStep('config')
+}
+
+
+</script>
+
 <template>
     <!-- 列表页面/start -->
     <div class="container">
@@ -100,96 +190,6 @@
     </el-dialog>
     <!-- 显示dialog组件/end -->
 </template>
-
-<script lang="ts" setup>
-/**
- * 一：依赖部分
- */
-import { ref, reactive } from 'vue' // 引用vue3
-import { Promotion } from '@element-plus/icons-vue' // 引用图标库
-import { useI18n } from 'vue-i18n' // 引用国际化
-import { useCommon } from '@/stores/common' // 引用公共store
-import { Axios } from '@/utils/axios' // 引用axios
-
-/**
- * 二：定义部分
- */
-// dialog组件自动弹出
-const dialogVisible = ref(true)
-
-const { t, locale } = useI18n() // 国际化
-
-const common = useCommon() // 公共store
-
-
-// 状态设置
-const state = reactive({
-    // 开始表单
-    startForm: {
-        lang: locale.value, // 语言：默认中文简体
-        packageManager: 'pnpm' + t('Recommand'), // NPM包管理器：默认pnpm
-        setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
-    },
-
-    // 环境检测数据
-    envCheckPhpData: [], // PHP环境检测数据
-    envCheckNpmData: [], // NPM环境检测数据
-
-    // 是否显示环境检测
-    checkDoneIndex: 'executing', // 三种状态：执行 executing 、成功 ok 、失败 fail
-
-})
-
-/**
- * 三：函数部分
- */
-// 语言切换
-const changeLang = (val: string) => {
-    window.localStorage.setItem('ta-lang', val)
-    location.reload()
-}
-
-// 获取PHP环境检测数据
-Axios.get('http://localhost:3000/api/envCheckPhp').then((res: any) => {
-    console.log('res_php:', res)
-    if (res.data.code == 1) {
-        state.envCheckPhpData = res.data.data
-    }
-})
-
-// 获取NPM环境检测数据
-Axios.get('http://localhost:3000/api/envCheckNpm').then((res: any) => {
-    console.log('res_npm:', res)
-    if (res.data.code == 1) {
-        state.envCheckNpmData = res.data.data
-    }
-})
-
-// 改变包管理器
-const changePackageManager = () => {
-    console.log('改变包管理器 且 下一步操作')
-}
-
-// 开始安装
-const startInstall = () => {
-    // 判断显示dialog为true时显示包管理器
-    if (common.showStartDialog) {
-        changePackageManager()
-    }
-    // 关闭dialog
-    common.toggleStartDialog(false)
-}
-
-/**
- * 下一步配置数据库
- */
- const goConfig = () => {
-    state.checkDoneIndex = 'ok'
-    common.setStep('config')
-}
-
-
-</script>
 
 <style scoped lang="scss">
 // 列表页面/start

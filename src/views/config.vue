@@ -1,3 +1,85 @@
+<template>
+  <div class="container">
+
+    <div class="table-title">站点配置</div>
+
+    <div class="table">
+      <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="180px">
+        <!-- MySQL数据库地址 -->
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库地址" prop="hostname" class="table-label">
+            <el-input v-model="ruleForm.hostname" class="table-input" />
+          </el-form-item>
+        </div>
+        <!-- MySQL数据库用户名 -->
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库用户名" prop="username" class="table-label">
+            <el-input v-model="ruleForm.username" />
+          </el-form-item>
+        </div>
+        <!-- MySQL数据库密码 -->
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库密码" prop="password" class="table-label">
+            <el-input v-model="ruleForm.password" />
+          </el-form-item>
+        </div>
+        <!-- MySQL数据库端口 -->
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库端口" prop="hostport" class="table-label">
+            <el-input v-model="ruleForm.hostport" />
+          </el-form-item>
+        </div>
+        <!-- MySQL数据库名称 -->
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库名称" prop="database" class="table-label">
+            <el-input v-model="ruleForm.database" />
+          </el-form-item>
+        </div>
+        <!-- MySQL数据库表前缀 -->
+        <div class="table-column table-item">
+          <el-form-item label="MySQL数据库表前缀" prop="prefix" class="table-label">
+            <el-input v-model="ruleForm.prefix" />
+          </el-form-item>
+        </div>
+        <div class="table-item-br"></div>
+
+        <!-- 管理员账号 -->
+        <div class="table-column table-item">
+          <el-form-item label="管理员账号" prop="adminname" class="table-label">
+            <el-input v-model="ruleForm.adminname" />
+          </el-form-item>
+        </div>
+        <!-- 管理员密码 -->
+        <div class="table-column table-item">
+          <el-form-item label="管理员密码" prop="adminpassword" class="table-label">
+            <el-input v-model="ruleForm.adminpassword" />
+          </el-form-item>
+        </div>
+        <!-- 重复管理员密码 -->
+        <div class="table-column table-item">
+          <el-form-item label="重复管理员密码" prop="repeatadminpassword" class="table-label">
+            <el-input v-model="ruleForm.repeatadminpassword" />
+          </el-form-item>
+        </div>
+        <div class="table-item-br"></div>
+
+        <!-- 站点名称 -->
+        <div class="table-column table-item">
+          <el-form-item label="站点名称" prop="sitename" class="table-label">
+            <el-input v-model="ruleForm.sitename" />
+          </el-form-item>
+        </div>
+
+        <!-- 提交按钮 -->
+        <div class="footer-buttons">
+          <el-button class="button" @click="prevStep">上一步</el-button>
+          <el-button class="button" type="primary" @click="submitForm(ruleFormRef)">提交</el-button>
+        </div>
+      </el-form>
+    </div>
+
+  </div>
+</template>
 
 <script lang="ts" setup>
 /**
@@ -113,90 +195,6 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   })
 }
 </script>
-
-<template>
-  <div class="container">
-
-    <div class="table-title">站点配置</div>
-
-    <div class="table">
-      <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="180px">
-        <!-- MySQL数据库地址 -->
-        <div class="table-column table-item">
-          <el-form-item label="MySQL数据库地址" prop="hostname" class="table-label">
-            <el-input v-model="ruleForm.hostname" class="table-input" />
-          </el-form-item>
-        </div>
-        <!-- MySQL数据库用户名 -->
-        <div class="table-column table-item">
-          <el-form-item label="MySQL数据库用户名" prop="username" class="table-label">
-            <el-input v-model="ruleForm.username" />
-          </el-form-item>
-        </div>
-        <!-- MySQL数据库密码 -->
-        <div class="table-column table-item">
-          <el-form-item label="MySQL数据库密码" prop="password" class="table-label">
-            <el-input v-model="ruleForm.password" />
-          </el-form-item>
-        </div>
-        <!-- MySQL数据库端口 -->
-        <div class="table-column table-item">
-          <el-form-item label="MySQL数据库端口" prop="hostport" class="table-label">
-            <el-input v-model="ruleForm.hostport" />
-          </el-form-item>
-        </div>
-        <!-- MySQL数据库名称 -->
-        <div class="table-column table-item">
-          <el-form-item label="MySQL数据库名称" prop="database" class="table-label">
-            <el-input v-model="ruleForm.database" />
-          </el-form-item>
-        </div>
-        <!-- MySQL数据库表前缀 -->
-        <div class="table-column table-item">
-          <el-form-item label="MySQL数据库表前缀" prop="prefix" class="table-label">
-            <el-input v-model="ruleForm.prefix" />
-          </el-form-item>
-        </div>
-        <div class="table-item-br"></div>
-
-        <!-- 管理员账号 -->
-        <div class="table-column table-item">
-          <el-form-item label="管理员账号" prop="adminname" class="table-label">
-            <el-input v-model="ruleForm.adminname" />
-          </el-form-item>
-        </div>
-        <!-- 管理员密码 -->
-        <div class="table-column table-item">
-          <el-form-item label="管理员密码" prop="adminpassword" class="table-label">
-            <el-input v-model="ruleForm.adminpassword" />
-          </el-form-item>
-        </div>
-        <!-- 重复管理员密码 -->
-        <div class="table-column table-item">
-          <el-form-item label="重复管理员密码" prop="repeatadminpassword" class="table-label">
-            <el-input v-model="ruleForm.repeatadminpassword" />
-          </el-form-item>
-        </div>
-        <div class="table-item-br"></div>
-
-        <!-- 站点名称 -->
-        <div class="table-column table-item">
-          <el-form-item label="站点名称" prop="sitename" class="table-label">
-            <el-input v-model="ruleForm.sitename" />
-          </el-form-item>
-        </div>
-
-        <!-- 提交按钮 -->
-        <div class="footer-buttons">
-          <el-button class="button" @click="prevStep">上一步</el-button>
-          <el-button class="button" type="primary" @click="submitForm(ruleFormRef)">提交</el-button>
-        </div>
-      </el-form>
-    </div>
-
-  </div>
-</template>
-
 
 <style lang="scss" scoped>
 .container {
