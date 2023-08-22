@@ -1,10 +1,11 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 /**
  * 一：依赖部分
  */
 import { reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
+import { CheckState } from '@/stores/interfaces/index' // 引用状态接口
 import { useCommon } from '@/stores/common' // 引用公共store
 import { Axios } from '@/utils/axios' // 引用axios
 
@@ -17,7 +18,7 @@ const { t, locale } = useI18n() // 国际化
 const common = useCommon() // 公共store
 
 // 状态设置
-const state = reactive({
+const state: CheckState = reactive({
     // 开始表单
     startForm: {
         lang: locale.value, // 语言：默认中文简体
