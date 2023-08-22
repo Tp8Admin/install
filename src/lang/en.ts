@@ -4,7 +4,7 @@ export default {
      */
     'Environmental inspection': 'Environmental inspection',
     'Checking installation environment': 'Checking the installation environment',
-    
+
     /**
      * check页面
      */

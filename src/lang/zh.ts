@@ -53,5 +53,4 @@ export default {
     'Test connection to data server': '测试连接数据服务器...',
     'Install now': '立即安装',
     'Previous step': '上一步',
-    
 }

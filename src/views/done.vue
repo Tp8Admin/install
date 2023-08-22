@@ -5,17 +5,10 @@
             <div class="done-box">
                 <div>后台地址</div>
                 <div class="admin-url">http://127.0.0.1/index.html/#/admin</div>
-                <div class="reload-tips">
-                    需重新安装系统？<span class="reload">请点击我</span>
-                </div>
+                <div class="reload-tips">需重新安装系统？<span class="reload">请点击我</span></div>
             </div>
             <div class="text-warning">
-                <el-alert
-                    closable="false"
-                    center
-                    title="建议删除: 根目录/public/install 文件夹；本页仅在您的设备上可见。"
-                    type="error"
-                />
+                <el-alert closable="false" center title="建议删除: 根目录/public/install 文件夹；本页仅在您的设备上可见。" type="error" />
             </div>
             <div class="done-button">
                 <el-button type="primary" plain size="large">隐藏 index.html？</el-button>
@@ -26,9 +19,7 @@
     </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss">
 .container {

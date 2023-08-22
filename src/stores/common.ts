@@ -16,7 +16,7 @@ export const useCommon = defineStore('common', {
         // 切换步骤
         setStep(val: string) {
             this.step = val
-        }
+        },
     },
     persist: {
         key: 'storeCommon',

@@ -1,10 +1,10 @@
 <template>
     <!-- 检测页面 -->
-    <Check v-if="common.step == 'check'"/>
+    <Check v-if="common.step == 'check'" />
     <!-- 配置页面 -->
-    <Config v-if="common.step == 'config'"/>
+    <Config v-if="common.step == 'config'" />
     <!-- 安装完成页面 -->
-    <Done v-if="common.step == 'done'"/>
+    <Done v-if="common.step == 'done'" />
 </template>
 
 <script setup lang="ts">
@@ -26,11 +26,10 @@ var langValue = window.localStorage.getItem('ta-lang') || 'zh-cn'
 locale.value = langValue
 
 const common = useCommon() // 公共store
-
 </script>
 
 <style lang="scss">
 body {
-  background-color: #f5f5f5;
+    background-color: #f5f5f5;
 }
 </style>

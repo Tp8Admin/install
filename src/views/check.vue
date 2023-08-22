@@ -2,7 +2,7 @@
 /**
  * 一：依赖部分
  */
-import { ref, reactive } from 'vue' // 引用vue3
+import { reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
 import { useCommon } from '@/stores/common' // 引用公共store
@@ -12,12 +12,9 @@ import { Axios } from '@/utils/axios' // 引用axios
  * 二：定义部分
  */
 // dialog组件自动弹出
-const dialogVisible = ref(true)
-
 const { t, locale } = useI18n() // 国际化
 
 const common = useCommon() // 公共store
-
 
 // 状态设置
 const state = reactive({
@@ -34,7 +31,6 @@ const state = reactive({
 
     // 是否显示环境检测
     checkDoneIndex: 'executing', // 三种状态：执行 executing 、成功 ok 、失败 fail
-
 })
 
 /**
@@ -80,12 +76,10 @@ const startInstall = () => {
 /**
  * 下一步配置数据库
  */
- const goConfig = () => {
+const goConfig = () => {
     state.checkDoneIndex = 'ok'
     common.setStep('config')
 }
-
-
 </script>
 
 <template>
@@ -93,32 +87,26 @@ const startInstall = () => {
     <div class="container">
         <div class="table-title">{{ t('Environmental inspection') }}</div>
         <div class="table">
-
             <!-- 第一步：PHP检测环境 -->
-            <template v-for="item in state.envCheckPhpData" :key="idx">
-                <div class="table-item" >
-                    <div class="table-label">
-                        <span>{{ item.name }}</span>
-                    </div>
-                    <div class="table-value">
-                        {{ item.describe }}<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                    </div>
-                </div>
-            </template>
-            
-            <!-- 第二步：NPM检测环境-->
-            <template v-for="item in state.envCheckNpmData" :key="idx">
+            <template v-for="item in state.envCheckPhpData" :key="item.id">
                 <div class="table-item">
                     <div class="table-label">
                         <span>{{ item.name }}</span>
                     </div>
-                    <div class="table-value">
-                        {{ item.describe }}<img title="图片" class="data-state" src="@/assets/install/ok.png" />
-                    </div>
+                    <div class="table-value">{{ item.describe }}<img title="图片" class="data-state" src="@/assets/install/ok.png" /></div>
                 </div>
             </template>
 
-           
+            <!-- 第二步：NPM检测环境-->
+            <template v-for="item in state.envCheckNpmData" :key="item.id">
+                <div class="table-item">
+                    <div class="table-label">
+                        <span>{{ item.name }}</span>
+                    </div>
+                    <div class="table-value">{{ item.describe }}<img title="图片" class="data-state" src="@/assets/install/ok.png" /></div>
+                </div>
+            </template>
+
             <div class="table-item">
                 <div class="table-label">
                     <span>是否测试命令执行？</span>
@@ -131,7 +119,7 @@ const startInstall = () => {
             <div class="table-item">
                 <div class="table-label">{{ t('Checking installation environment') }}</div>
                 <div class="table-value">
-                    <img title="正在检测" class="data-state" alt="正在检测" src="@/assets/install/loading.gif"/>
+                    <img title="正在检测" class="data-state" alt="正在检测" src="@/assets/install/loading.gif" />
                 </div>
             </div>
 
@@ -142,8 +130,14 @@ const startInstall = () => {
     <!-- 列表页面/end -->
 
     <!-- 显示dialog组件/start -->
-    <el-dialog v-model="common.showStartDialog" :title="t('Ready to start')" center :show-close="false"
-        :close-on-click-modal="false" :close-on-press-escape="false">
+    <el-dialog
+        v-model="common.showStartDialog"
+        :title="t('Ready to start')"
+        center
+        :show-close="false"
+        :close-on-click-modal="false"
+        :close-on-press-escape="false"
+    >
         <!-- 表单内容/start -->
         <el-form label-width="120px" label-position="left" :model="state.startForm" @click="startInstall">
             <!-- 语言 -->
@@ -311,7 +305,7 @@ const startInstall = () => {
     opacity: 1;
 }
 
-// 按钮 / end 
+// 按钮 / end
 .w100 {
     width: 100%;
 }
