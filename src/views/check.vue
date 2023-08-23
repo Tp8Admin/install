@@ -5,7 +5,7 @@
 import { reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
-import { CheckState } from '/@/stores/interfaces/index' // 引用状态接口
+import { CheckState } from '/@/stores/interface/index' // 引用状态接口
 import { useCommon } from '/@/stores/common' // 引用公共store
 import { Axios } from '/@/utils/axios' // 引用axios
 
@@ -99,7 +99,7 @@ const goConfig = () => {
             </div>
 
             <!-- 第二步：NPM检测环境-->
-            <div v-for="item in state.envCheckNpmData" :key="item.id">
+            <div v-for="(item, idx) in state.envCheckNpmData" :key="idx">
                 <div class="table-item">
                     <div class="table-label">
                         <span>{{ item.name }}</span>
