@@ -1,6 +1,6 @@
 import { createApp } from 'vue' // 引入createApp
 import App from './App.vue' // 引入App.vue
-import { i18n } from '@/plugins/i18n' // 引入i18n
+import { i18n } from '/@/plugins/i18n' // 引入i18n
 import ElementPlus from 'element-plus' // 引入ElementPlus
 import 'element-plus/dist/index.css' // 引入ElementPlus样式
 import { createPinia } from 'pinia' // 引入Pinia

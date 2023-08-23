@@ -5,9 +5,9 @@
 import { reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
-import { CheckState } from '@/stores/interfaces/index' // 引用状态接口
-import { useCommon } from '@/stores/common' // 引用公共store
-import { Axios } from '@/utils/axios' // 引用axios
+import { CheckState } from '/@/stores/interfaces/index' // 引用状态接口
+import { useCommon } from '/@/stores/common' // 引用公共store
+import { Axios } from '/@/utils/axios' // 引用axios
 
 /**
  * 二：定义部分
@@ -89,38 +89,38 @@ const goConfig = () => {
         <div class="table-title">{{ t('Environmental inspection') }}</div>
         <div class="table">
             <!-- 第一步：PHP检测环境 -->
-            <template v-for="item in state.envCheckPhpData" :key="item.id">
+            <div v-for="(item, idx) in state.envCheckPhpData" :key="idx">
                 <div class="table-item">
                     <div class="table-label">
                         <span>{{ item.name }}</span>
                     </div>
-                    <div class="table-value">{{ item.describe }}<img title="图片" class="data-state" src="@/assets/install/ok.png" /></div>
+                    <div class="table-value">{{ item.describe }}<img title="图片" class="data-state" src="/@/assets/install/ok.png" /></div>
                 </div>
-            </template>
+            </div>
 
             <!-- 第二步：NPM检测环境-->
-            <template v-for="item in state.envCheckNpmData" :key="item.id">
+            <div v-for="item in state.envCheckNpmData" :key="item.id">
                 <div class="table-item">
                     <div class="table-label">
                         <span>{{ item.name }}</span>
                     </div>
-                    <div class="table-value">{{ item.describe }}<img title="图片" class="data-state" src="@/assets/install/ok.png" /></div>
+                    <div class="table-value">{{ item.describe }}<img title="图片" class="data-state" src="/@/assets/install/ok.png" /></div>
                 </div>
-            </template>
+            </div>
 
             <div class="table-item">
                 <div class="table-label">
                     <span>是否测试命令执行？</span>
                 </div>
                 <div class="table-value">
-                    <img title="图片" class="data-state" src="@/assets/install/warn.png" />
+                    <img title="图片" class="data-state" src="/@/assets/install/warn.png" />
                 </div>
             </div>
 
             <div class="table-item">
                 <div class="table-label">{{ t('Checking installation environment') }}</div>
                 <div class="table-value">
-                    <img title="正在检测" class="data-state" alt="正在检测" src="@/assets/install/loading.gif" />
+                    <img title="正在检测" class="data-state" alt="正在检测" src="/@/assets/install/loading.gif" />
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import { i18n } from '@/plugins/i18n'
+import { i18n } from '/@/plugins/i18n'
 
 const langValue = window.localStorage.getItem('ta-lang') || 'zh-cn'
 
