@@ -44,7 +44,7 @@ const changeLang = (val: string) => {
 }
 
 // 获取PHP环境检测数据
-Axios.get('http://localhost:8000/api/install/envBaseCheck').then((res: any) => {
+Axios.get('http://localhost:8000/api/install/envBasePhp').then((res: any) => {
     console.log('res_php:', res)
     if (res.data.code == 1) {
         state.envCheckPhpData = res.data.data
