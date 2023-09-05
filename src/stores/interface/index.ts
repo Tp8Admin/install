@@ -6,14 +6,21 @@ export interface CheckState {
         setNpmRegistery: string, // 设置NPM源：默认淘宝
     },
 
-    // 环境检测数据
-    envCheckPhpData: {  // PHP环境检测数据
-        name: string
-        describe: string
+    /**
+     * 环境检测数据
+     */
+    // PHP环境检测数据
+    envCheckPhpData: { 
+        name: string        // 名称
+        describe: string    // 描述
+        state: string       // 状态
     }[],
-    envCheckNpmData: {  // NPM环境检测数据
-        name: string
-        describe: string
+
+    // NPM环境检测数据
+    envCheckNpmData: { 
+        name: string        // 名称
+        describe: string    // 描述
+        state: string       // 状态
     }[],
 
     // 是否显示环境检测

@@ -74,6 +74,11 @@ const startInstall = () => {
     common.toggleStartDialog(false)
 }
 
+// 根据文字显示相应的图片
+const getSrc = (name: string) => {
+    return `/@/assets/install/${name}.png`
+}
+
 /**
  * 下一步配置数据库
  */
@@ -88,23 +93,34 @@ const goConfig = () => {
     <div class="container">
         <div class="table-title">{{ t('Environmental inspection') }}</div>
         <div class="table">
+            
             <!-- 第一步：PHP检测环境 -->
             <div v-for="(item, idx) in state.envCheckPhpData" :key="idx">
                 <div class="table-item">
+                    <!-- 正常显示内容 -->
                     <div class="table-label">
                         <span>{{ item.name }}</span>
                     </div>
-                    <div class="table-value">{{ item.describe }}<img title="图片" class="data-state" src="/@/assets/install/ok.png" /></div>
+                    <!-- 异常显示内容 -->
+                    <div class="table-value">
+                        {{ item.describe }}
+                        <img title="图片" class="data-state" :src="getSrc(item.state)" :alt="item.state" />
+                    </div>
                 </div>
             </div>
 
             <!-- 第二步：NPM检测环境-->
             <div v-for="(item, idx) in state.envCheckNpmData" :key="idx">
                 <div class="table-item">
+                    <!-- 正常显示内容 -->
                     <div class="table-label">
                         <span>{{ item.name }}</span>
                     </div>
-                    <div class="table-value">{{ item.describe }}<img title="图片" class="data-state" src="/@/assets/install/ok.png" /></div>
+                    <!-- 异常显示内容 -->
+                    <div class="table-value">
+                        {{ item.describe }}
+                        <img title="图片" class="data-state" :src="getSrc(item.state)" :alt="item.state" />
+                    </div>
                 </div>
             </div>
 
