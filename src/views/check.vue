@@ -12,6 +12,10 @@ import { Axios } from '/@/utils/axios' // 引用axios
 /**
  * 二：定义部分
  */
+
+// 定义路径
+const VITE_HOST = import.meta.env.VITE_HOST
+
 // dialog组件自动弹出
 const { t, locale } = useI18n() // 国际化
 
@@ -44,7 +48,7 @@ const changeLang = (val: string) => {
 }
 
 // 获取PHP环境检测数据
-Axios.get('http://localhost:8000/api/install/envCheckPhp').then((res: any) => {
+Axios.get(VITE_HOST+'/api/install/envCheckPhp').then((res: any) => {
     console.log('res_php:', res)
     if (res.data.code == 1) {
         state.envCheckPhpData = res.data.data
@@ -52,7 +56,7 @@ Axios.get('http://localhost:8000/api/install/envCheckPhp').then((res: any) => {
 })
 
 // 获取NPM环境检测数据
-Axios.get('http://localhost:3000/api/envCheckNpm').then((res: any) => {
+Axios.get(VITE_HOST+'/api/envCheckNpm').then((res: any) => {
     console.log('res_npm:', res)
     if (res.data.code == 1) {
         state.envCheckNpmData = res.data.data
@@ -93,7 +97,7 @@ const goConfig = () => {
     <div class="container">
         <div class="table-title">{{ t('Environmental inspection') }}</div>
         <div class="table">
-            
+
             <!-- 第一步：PHP检测环境 -->
             <div v-for="(item, idx) in state.envCheckPhpData" :key="idx">
                 <div class="table-item">
