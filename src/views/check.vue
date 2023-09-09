@@ -7,7 +7,7 @@ import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
 import { CheckState } from '/@/stores/interface/index' // 引用状态接口
 import { useCommon } from '/@/stores/common' // 引用公共store
-import { getEnvPhp, getEnvNpm } from '/@/api/install/index' // 
+import { getEnvPhp, getEnvNpm } from '/@/api/install/index' // 引入安装接口
 /**
  * 二：定义部分
  */
