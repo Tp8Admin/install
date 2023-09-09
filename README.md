@@ -1,18 +1,35 @@
-# Vue 3 + TypeScript + Vite
+# Tp8Admin安装程序
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### 介绍
+🌈 一款最新的流行技术栈的后台管理系统的安装依赖程序！
 
-## Recommended IDE Setup
+- Vue3.3
+- TypeScript
+- Element Plus
+- Pinia
 
--   [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### 特别鸣谢开源项目
+🌈 感谢巨人提供肩膀，排名不分先后
+- [Vue](https://github.com/vuejs/core)
+- [Element Plus](https://github.com/element-plus/element-plus)
+- [TypeScript](https://github.com/microsoft/TypeScript)
+- [vue-router](https://github.com/vuejs/vue-router-next)
+- [vite](https://github.com/vitejs/vite)
+- [Pinia](https://github.com/vuejs/pinia)
+- [Axios](https://github.com/axios/axios)
+- [eslint](https://github.com/eslint/eslint)
+- [prettier](https://github.com/prettier/prettier)
 
-## Type Support For `.vue` Imports in TS
+### 特别鸣谢开发工具
+- [VSCode](https://code.visualstudio.com/)
+- [ApiPost](https://www.apipost.cn/)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### 接口地址
+- [ApiPost接口地址](https://console-docs.apipost.cn/preview/c99ded008060d2da/86b091dbdbf38721)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### 版权信息
+🌈 Tp8Admin 安装程序遵循`Apache2.0`开源协议发布，提供无需授权的免费使用。\
+本项目包含的第三方源码和二进制文件之版权信息另行标注。
 
-1. Disable the built-in TypeScript Extension
-    1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### 支持项目
+🌈 无需捐赠，如果觉得项目不错，或者已经在使用了，希望你可以去 [Github](https://github.com/tp8admin/tp8admin-install) 帮我们点个 ⭐ Star，这将是对我们极大的鼓励与支持。
