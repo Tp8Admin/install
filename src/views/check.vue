@@ -7,15 +7,10 @@ import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
 import { CheckState } from '/@/stores/interface/index' // 引用状态接口
 import { useCommon } from '/@/stores/common' // 引用公共store
-import { Axios } from '/@/utils/axios' // 引用axios
-
+import { getEnvPhp, getEnvNpm } from '/@/api/install/index' // 
 /**
  * 二：定义部分
  */
-
-// 定义路径
-const VITE_HOST = import.meta.env.VITE_HOST
-
 // dialog组件自动弹出
 const { t, locale } = useI18n() // 国际化
 
@@ -26,7 +21,7 @@ const state: CheckState = reactive({
     // 开始表单
     startForm: {
         lang: locale.value, // 语言：默认中文简体
-        packageManager: 'pnpm' + t('Recommand'), // NPM包管理器：默认pnpm
+        packageManager: 'pnpm', // NPM包管理器：默认pnpm
         setNpmRegistery: 'taobao', // 设置NPM源：默认淘宝
     },
 
@@ -47,22 +42,6 @@ const changeLang = (val: string) => {
     location.reload()
 }
 
-// 获取PHP环境检测数据
-Axios.get(VITE_HOST+'/api/install/envCheckPhp').then((res: any) => {
-    console.log('res_php:', res)
-    if (res.data.code == 1) {
-        state.envCheckPhpData = res.data.data
-    }
-})
-
-// 获取NPM环境检测数据
-Axios.get(VITE_HOST+'/api/envCheckNpm').then((res: any) => {
-    console.log('res_npm:', res)
-    if (res.data.code == 1) {
-        state.envCheckNpmData = res.data.data
-    }
-})
-
 // 改变包管理器
 const changePackageManager = () => {
     console.log('改变包管理器 且 下一步操作')
@@ -70,12 +49,30 @@ const changePackageManager = () => {
 
 // 开始安装
 const startInstall = () => {
-    // 判断显示dialog为true时显示包管理器
+    // step1:判断显示dialog为true时显示包管理器
     if (common.showStartDialog) {
         changePackageManager()
     }
-    // 关闭dialog
+    // step2:关闭dialog
     common.toggleStartDialog(false)
+
+    // step3:获取PHP环境检测数据
+    const packageManagerParam = state.startForm.packageManager
+    
+    getEnvPhp().then((res: any) => {
+        console.log('res_php:', res)
+        if (res.data.code == 1) {
+            state.envCheckPhpData = res.data.data
+
+            // step4:获取NPM环境检测数据
+            getEnvNpm(packageManagerParam).then((res: any) => {
+                console.log('res_npm:', res)
+                if (res.data.code == 1) {
+                    state.envCheckNpmData = res.data.data
+                }
+            })
+        }
+    })
 }
 
 // 根据文字显示相应的图片
@@ -170,7 +167,7 @@ const goConfig = () => {
             </el-form-item>
 
             <!-- NPM包管理器 -->
-            <el-form-item :label="t('NPM package manager')">
+            <el-form-item :label="t('NPM package manager')"> {{ state.startForm.packageManager }}
                 <el-select class="w100" v-model="state.startForm.packageManager">
                     <el-option label="npm" value="npm"></el-option>
                     <el-option label="cnpm" value="cnpm"></el-option>
