@@ -4,7 +4,7 @@
  */
 import { reactive, ref } from 'vue'
 import type { FormInstance } from 'element-plus' // 表单实例类型
-import { useCommon } from '/@/stores/common'
+import { useCommonStore } from '/@/stores/common'
 
 /**
  * 二：定义部分
@@ -13,7 +13,7 @@ import { useCommon } from '/@/stores/common'
 const ruleFormRef = ref<FormInstance>()
 
 // 公共数据
-const common = useCommon()
+const common = useCommonStore()
 
 // 表单数据
 const ruleForm = reactive({

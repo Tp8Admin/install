@@ -6,7 +6,7 @@ import { reactive } from 'vue' // 引用vue3
 import { Promotion } from '@element-plus/icons-vue' // 引用图标库
 import { useI18n } from 'vue-i18n' // 引用国际化
 import { CheckState } from '/@/stores/interface/index' // 引用状态接口
-import { useCommon } from '/@/stores/common' // 引用公共store
+import { useCommonStore } from '/@/stores/common' // 引用公共store
 import { getEnvPhp, getEnvNpm } from '/@/api/install/index' // 引入安装接口
 /**
  * 二：定义部分
@@ -14,7 +14,7 @@ import { getEnvPhp, getEnvNpm } from '/@/api/install/index' // 引入安装接�
 // dialog组件自动弹出
 const { t, locale } = useI18n() // 国际化
 
-const common = useCommon() // 公共store
+const common = useCommonStore() // 公共store
 
 // 状态设置
 const state: CheckState = reactive({

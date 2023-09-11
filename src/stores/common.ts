@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useCommon = defineStore('common', {
+export const useCommonStore = defineStore('common', {
     state: () => {
         return {
             step: 'check', // 当前步骤

@@ -3,7 +3,8 @@
  * 一：依赖部分
  */
 import { useI18n } from 'vue-i18n'
-import { useCommon } from '/@/stores/common' // 引用公共store
+import { useCommonStore } from '/@/stores/common' // 引用公共store
+//页面
 import Check from '/@/views/check.vue'
 import Config from '/@/views/config.vue'
 import Done from '/@/views/done.vue'
@@ -13,10 +14,11 @@ import Done from '/@/views/done.vue'
  */
 const { locale } = useI18n()
 
+// 语言
 var langValue = window.localStorage.getItem('ta-lang') || 'zh-cn'
 locale.value = langValue
 
-const common = useCommon() // 公共store
+const common = useCommonStore() // 公共store
 </script>
 
 <template>
@@ -26,6 +28,7 @@ const common = useCommon() // 公共store
     <Config v-if="common.step == 'config'" />
     <!-- 安装完成页面 -->
     <Done v-if="common.step == 'done'" />
+    
 </template>
 
 <style lang="scss">
