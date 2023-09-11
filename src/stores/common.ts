@@ -1,7 +1,13 @@
 import { defineStore } from 'pinia'
 
+interface State {
+    step: string
+    showStartDialog: boolean
+}
+
+
 export const useCommonStore = defineStore('common', {
-    state: () => {
+    state: () : State => {
         return {
             step: 'check', // 当前步骤
             showStartDialog: true, // 是否显示开始对话框，默认显示
