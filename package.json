@@ -17,6 +17,7 @@
         "element-plus": "^2.3.9",
         "pinia": "2.0.0-rc.10",
         "pinia-plugin-persistedstate": "^3.2.0",
+        "uuid-1345": "^1.0.2",
         "vue": "^3.3.4",
         "vue-i18n": "9.3.0-beta.25"
     },

@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@element-plus/icons-vue':
     specifier: ^2.1.0
@@ -20,6 +16,9 @@ dependencies:
   pinia-plugin-persistedstate:
     specifier: ^3.2.0
     version: registry.npmmirror.com/pinia-plugin-persistedstate@3.2.0(pinia@2.0.0-rc.10)
+  uuid-1345:
+    specifier: ^1.0.2
+    version: registry.npmmirror.com/uuid-1345@1.0.2
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -31,6 +30,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.4.8
     version: registry.npmmirror.com/@types/node@20.4.8
+  '@types/uuid-1345':
+    specifier: ^0.99.23
+    version: registry.npmmirror.com/@types/uuid-1345@0.99.23
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.3.0
     version: 6.3.0(@typescript-eslint/parser@6.3.0)(eslint@8.46.0)(typescript@5.0.2)
@@ -1874,6 +1876,14 @@ packages:
     version: 20.4.8
     dev: true
 
+  registry.npmmirror.com/@types/uuid-1345@0.99.23:
+    resolution: {integrity: sha512-3pW84aeJAzRk3LSVKBTRw0tKiil+zvZuwo6b7/QVy397scQfPH+F/YnfSNMBfXJaVcbDQUqWspYCVl3DebUSfQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/uuid-1345/-/uuid-1345-0.99.23.tgz}
+    name: '@types/uuid-1345'
+    version: 0.99.23
+    dependencies:
+      '@types/node': registry.npmmirror.com/@types/node@20.4.8
+    dev: true
+
   registry.npmmirror.com/@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.5.0.tgz}
     name: '@vue/devtools-api'
@@ -1954,6 +1964,12 @@ packages:
     dev: true
     optional: true
 
+  registry.npmmirror.com/macaddress@0.5.3:
+    resolution: {integrity: sha512-vGBKTA+jwM4KgjGZ+S/8/Mkj9rWzePyGY6jManXPGhiWu63RYwW8dKPyk5koP+8qNVhPhHgFa1y/MJ4wrjsNrg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/macaddress/-/macaddress-0.5.3.tgz}
+    name: macaddress
+    version: 0.5.3
+    dev: false
+
   registry.npmmirror.com/mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mime-db/-/mime-db-1.52.0.tgz}
     name: mime-db
@@ -2022,6 +2038,14 @@ packages:
     version: 1.0.2
     engines: {node: '>=0.10.0'}
 
+  registry.npmmirror.com/uuid-1345@1.0.2:
+    resolution: {integrity: sha512-bA5zYZui+3nwAc0s3VdGQGBfbVsJLVX7Np7ch2aqcEWFi5lsAEcmO3+lx3djM1npgpZI8KY2FITZ2uYTnYUYyw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uuid-1345/-/uuid-1345-1.0.2.tgz}
+    name: uuid-1345
+    version: 1.0.2
+    dependencies:
+      macaddress: registry.npmmirror.com/macaddress@0.5.3
+    dev: false
+
   registry.npmmirror.com/vue-demi@0.14.5(vue@3.3.4):
     resolution: {integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.14.5.tgz}
     id: registry.npmmirror.com/vue-demi/0.14.5
@@ -2055,3 +2079,7 @@ packages:
       '@vue/devtools-api': registry.npmmirror.com/@vue/devtools-api@6.5.0
       vue: 3.3.4
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
